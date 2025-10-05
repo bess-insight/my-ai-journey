@@ -252,3 +252,11 @@ X.shape == (6, 5, 3)
 | `X.shape == (6, 5, 3)`    | 得到标准时间序列输入结构       |
 
 你如果想把这个张量加上 batch 维度、做归一化、或者转成 PyTorch 格式，我可以帮你一步步封装成数据管道。要不要来个完整的 preprocessing 函数？
+
+
+num = np.sum(temperature >= 25.5)
+print(num)
+解释：
+temperature >= 25.5 会返回布尔数组：[False, False, False, False, False, True, True, True, False, False]
+用 np.sum(...) 统计 True 的个数（True 会被当作 1 处理）
+这是 NumPy 的典型“向量化布尔索引+统计”，非常高效，是你后续数据处理推荐掌握的套路。
