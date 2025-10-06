@@ -58,18 +58,28 @@ df = pd.DataFrame(data)
 
 ## ✅ 基本操作（你很快就能上手）
 
-| 功能    | 示例                                                  |
-| ----- | --------------------------------------------------- |
-| 查看前几行 | `df.head(3)`                                        |
-| 查看列名  | `df.columns`                                        |
-| 查看维度  | `df.shape`                                          |
-| 取出某列  | `df["voltage"]`                                     |
-| 取出某行  | `df.iloc[1]`                                        |
-| 过滤条件  | `df[df["current"] != -1.1]`                         |
-| 添加新列  | `df["power"] = df["voltage"] * df["current"]`       |
-| 删除列   | `df.drop(columns=["temperature"])`                  |
-| 统计指标  | `df.describe()`                                     |
-| 排序    | `df.sort_values(by="temperature", ascending=False)` |
+| 功能       | 示例                                                              | 是否改变 `df` |
+|------------|-------------------------------------------------------------------|----------------|
+| 查看前几行 | `df.head(3)`                                                      | ❌ 否           |
+| 查看列名   | `df.columns`                                                      | ❌ 否           |
+| 查看维度   | `df.shape`                                                        | ❌ 否           |
+| 取出某列   | `df["voltage"]`                                                   | ❌ 否           |
+| 取出某行   | `df.iloc[1]`                                                      | ❌ 否           |
+| 过滤条件   | `df[df["current"] != -1.1]`                                       | ❌ 否           |
+| 添加新列   | `df["power"] = df["voltage"] * df["current"]`                     | ✅ 是           |
+| 删除列     | `df.drop(columns=["temperature"])`                                | ❌ 否（除非加 `inplace=True`） |
+| 统计指标   | `df.describe()`                                                   | ❌ 否           |
+| 排序       | `df.sort_values(by="temperature", ascending=False)`              | ❌ 否（除非加 `inplace=True`） |
+
+---
+
+### ✅ 补充说明：
+- **赋值操作**（如添加新列）会直接修改 `df`。
+- **非赋值操作**（如 `.head()`, `.describe()`, `.sort_values()`）默认不会修改 `df`，除非你加上 `inplace=True` 或重新赋值。
+- 如果你想保持 `df` 不变，建议用 `.copy()` 创建副本再操作。
+
+---
+
 
 关键在于参数 `ascending=False`：
 
