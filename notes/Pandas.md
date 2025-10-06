@@ -71,6 +71,16 @@ df = pd.DataFrame(data)
 | 统计指标  | `df.describe()`                                     |
 | 排序    | `df.sort_values(by="temperature", ascending=False)` |
 
+这行代码是**按“temperature”列进行降序排列**。
+
+关键在于参数 `ascending=False`：
+
+- `ascending=True` → 升序（从小到大）
+- `ascending=False` → **降序**（从大到小）
+
+所以 `df.sort_values(by="temperature", ascending=False)` 会把温度从最高排到最低。
+
+如果你想升序排列，只需改成 `ascending=True`。需要我帮你可视化排序结果或分析排序后的数据吗？
 ---
 
 ## ✅ 和 NumPy 的关系？
